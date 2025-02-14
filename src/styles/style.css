@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+.sd-element__num {
+    font-size: 14px !important; /* Ajusta el tamaño según tus necesidades */
+   padding-bottom: 10px;
+  }
+
+.sv-string-viewer--multiline {
+    color: black;
+}
