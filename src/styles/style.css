@@ -12,3 +12,46 @@
 .sv-string-viewer--multiline {
     color: black;
 }
+
+/* Estilos para la transición de aparecer */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+/* Estilos para la transición de desaparecer */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgb(79, 0, 153, 0.6); 
+  text-align: center;
+  padding: 10px 0;
+  z-index: 10; /* Asegura que el footer esté por encima de otros elementos */
+}
+
+.footer-text {
+  color: rgb(244, 244, 244);
+  margin: 0 5px;
+}
+
+.gemini-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+

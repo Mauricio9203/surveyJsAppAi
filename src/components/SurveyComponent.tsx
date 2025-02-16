@@ -3,10 +3,11 @@ import { Survey } from "survey-react-ui";
 import { Model } from "survey-core";
 import "survey-core/defaultV2.css"; // Estilos de SurveyJS
 import { customTheme } from "../utils/theme_json"; // Tema personalizado
-import { formJSON } from "../surveys/example1"; // JSON de la encuesta
-import { Card, CardContent, Typography, Paper, Button} from "@mui/material"; // Importación de Material UI
+import { Card, CardContent, Typography, Paper, Button, Box } from "@mui/material"; // Importación de Material UI
+import { useGlobalState } from '../context/GlobalStateContext';
 
 const SurveyComponent: React.FC = () => {
+  const { surveyAi } = useGlobalState(); // Accede al estado showSurvey
   const [result, setResult] = useState<any>(null); // Estado para guardar la respuesta
   const [complete, setComplete] = useState<boolean>(true);
 
@@ -20,29 +21,32 @@ const SurveyComponent: React.FC = () => {
     }
   }, []);
 
-  const survey = new Model(formJSON); // Crear encuesta con JSON
+  const survey = new Model(surveyAi); // Crear encuesta con JSON
 
   // Capturar resultado cuando se completa la encuesta
   survey.onComplete.add((sender) => {
     setResult(sender.data);
-    setComplete(false)
+    setComplete(false);
     console.log(sender.data); // Mostrar en consola
   });
 
-  const handleBack = ()  => {
-    setComplete(true)
-  }
-   
+  const handleBack = () => {
+    setComplete(true);
+  };
 
   return (
-    <div style={{ width: "auto", margin: "auto" }}>
-      {complete && <Survey model={survey} />}
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', marginTop: '30px', marginBottom:'30px' }}>
+      <Card sx={{ width: '95%',  boxShadow: 5, marginBottom: "30px" }}>
+        {complete && (
+       
+            <Survey model={survey} />
+   
+        )}
 
-      {!complete && (
-        <Card sx={{ mt: 4, p: 2, boxShadow: 3 }}>
+        {!complete && (
           <CardContent>
             <Typography variant="h5" gutterBottom>
-              📊 Survey Results:
+              📊 Survey results:
             </Typography>
             <Paper variant="outlined" sx={{ backgroundColor: "#f5f5f5", p: 2 }}>
               <Typography
@@ -52,11 +56,15 @@ const SurveyComponent: React.FC = () => {
                 {JSON.stringify(result, null, 2)}
               </Typography>
             </Paper>
+            <Box sx={{ textAlign: 'center', mt: 2 }}>
+              <Button variant="outlined" onClick={handleBack}>
+                Back
+              </Button>
+            </Box>
           </CardContent>
-          <Button variant="outlined" onClick={handleBack}>Back</Button>
-        </Card>
-      )}
-    </div>
+        )}
+      </Card>
+    </Box>
   );
 };
 

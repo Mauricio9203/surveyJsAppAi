@@ -1,8 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/surveyJsTesting/', // Asegúrate de poner el nombre de tu repositorio aquí
-})
+  build: {
+    sourcemap: false,
+    outDir: 'dist', // Especifica el directorio de salida
+    assetsDir: 'assets', // Especifica el subdirectorio de los assets
+  },
+  base: '/surveyJsTesting/', // Asegúrate de que esto está bien configurado
+});
