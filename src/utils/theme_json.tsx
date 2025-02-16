@@ -4,7 +4,7 @@ export const customTheme: ITheme = {
   cssVariables: {
     "--sjs-font-pagetitle-family": "Arial, sans-serif",
     "--sjs-font-pagetitle-color": "rgba(142, 85, 206, 1)",
-    "--sjs-general-backcolor": "rgba(238, 227, 255, 1)", // Color de fondo general (lila claro)
+    "--sjs-general-backcolor": "rgba(238, 227, 255, 1)", // Color de fondo general (lila claroo)
     "--sjs-primary-backcolor": "rgb(81, 2, 171)", // Color principal (botones) - tono lila fuerte
     "--sjs-button-hovercolor": "rgb(57, 34, 86)", // Color de fondo cuando el ratón pasa sobre el botón (lila más oscuro)
     "--sjs-button-hovertextcolor": "rgb(210, 9, 9)", // Color del texto cuando el ratón pasa sobre el botón (blanco)
